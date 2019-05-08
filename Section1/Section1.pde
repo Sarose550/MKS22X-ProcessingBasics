@@ -1,4 +1,3 @@
-
 int MAX_VALUE = 100;
 int MIN_VALUE = -100;
 Visualizer v;
@@ -38,17 +37,24 @@ class Visualizer {
     //the values in the array.
     //Negative values are red, and go below the line.
     //Positive values are green and go above the line.
-    for(int i = 0; i < values.length; i++){
-      rect((float)40 * (i + 1), values[i], 40, values[i]);
-    }
 
     //???WRITE THIS METHOD FIRST!!!
     //THESE ARE WRONG: They just illustrate how they could look
-    //fill(255, 0, 0);
-    //rect(x+40, y+100, 60, 50);
-    //fill(0, 255, 0);
-    //rect(x+120, y+50, 60, 50);
-
+    for (int i  = 0; i < 10; i++) {
+      if (values[i] <= 100 && values[i] > 50){
+        fill(255, 0, 0);
+      }
+      else if (values[i] <= 50 && values[i] > 0) {
+        fill(255, 128, 0); 
+      }
+      else if (values[i] <= 0 && values[i] > -50) {
+        fill(255, 255, 0); 
+      }
+      else if (values[i] <= -50) {
+        fill(0, 255, 0);
+      }
+      rect(x + 40 * i, y + 100, 40, values[i]);
+    }
 
     //Width of the visualizer is 400!
 
@@ -61,7 +67,12 @@ class Visualizer {
       //??? keep them values between max/min value so they stay in the box.
 
       //??? reverse the speeds so the bar oscillates up/down when it reaches max/min
-
+      if (values[i] >= 100) {
+        speeds[i] = -speeds[i];
+      }
+      if (values[i] <= -100) {
+        speeds[i] = -speeds[i];
+      }
       
     }
   }
